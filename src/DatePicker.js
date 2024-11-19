@@ -118,7 +118,7 @@ const DateRangePicker = () => {
       <div className="flex items-center">
         <div className="border-l">
           <button
-            className="mx-6 my-3 py-2.5 text-gray-500 text-sm font-normal flex items-center gap-2 min-w-52"
+            className="mx-6 my-3 py-2.5 text-gray-1000 text-sm font-normal flex items-center gap-2 min-w-52"
             onClick={() => {
               if (showCalendars) return;
               setShowCalendars(true);
@@ -133,7 +133,7 @@ const DateRangePicker = () => {
         </div>
         <div className="border-l">
           <button
-            className="mx-6 my-3 py-2.5 text-gray-500 text-sm font-normal flex items-center gap-2 min-w-52"
+            className="mx-6 my-3 py-2.5 text-gray-1000 text-sm font-normal flex items-center gap-2 min-w-52"
             onClick={() => {
               if (showCalendars) return;
               setShowCalendars(true);
@@ -156,13 +156,13 @@ const DateRangePicker = () => {
             <div className="pt-5 px-6 border-r">
               <div className="flex justify-between items-center p-1 mb-3">
                 <button onClick={prevMonth}>
-                &#8592;
+                  &#8592;
                 </button>
                 <h2 className="text-base text-gray-700 font-medium">
                   {moment(leftMonth).format('MMMM YYYY')}
                 </h2>
                 <button onClick={nextMonth}>
-                &#8594;
+                  &#8594;
                 </button>
               </div>
 
@@ -176,27 +176,25 @@ const DateRangePicker = () => {
 
                   {getDaysInMonth(leftMonth).map((date, index) => (
                     <div
-                      className={`flex justify-center items-center ${
-                        isInRange(date) && isCurrentMonth(date, leftMonth)
-                          ? isStartDate(date)
-                            ? 'bg-gray-50 rounded-l-full'
-                            : isEndDate(date)
-                            ? 'bg-gray-50 rounded-r-full'
-                            : `bg-gray-50 ${getFirstColumn(index) ? 'rounded-l-full' : ''} ${getLastColumn(index) ? 'rounded-r-full' : ''}`
-                          : ''
-                      }`}
+                      className={`flex justify-center items-center ${isInRange(date) && isCurrentMonth(date, leftMonth)
+                        ? isStartDate(date)
+                          ? 'bg-gray-100 rounded-l-full'
+                          : isEndDate(date)
+                            ? 'bg-gray-100 rounded-r-full'
+                            : `bg-gray-100 ${getFirstColumn(index) ? 'rounded-l-full' : ''} ${getLastColumn(index) ? 'rounded-r-full' : ''}`
+                        : ''
+                        }`}
                       key={index}
                     >
                       <button
-                        className={`px-3 py-2 h-10 w-10 flex justify-center items-center rounded-full text-sm font-normal ${
-                          (isStartDate(date) || isEndDate(date)) && isCurrentMonth(date, leftMonth)
-                            ? 'bg-primary-700 text-white'
-                            : isToday(date) && isCurrentMonth(date, leftMonth)
-                            ? 'bg-gray-100'
+                        className={`px-3 py-2 h-10 w-10 flex justify-center items-center rounded-full text-sm font-normal ${(isStartDate(date) || isEndDate(date)) && isCurrentMonth(date, leftMonth)
+                          ? 'bg-blue-500 text-white'
+                          : isToday(date) && isCurrentMonth(date, leftMonth)
+                            ? 'bg-gray-200'
                             : isCurrentMonth(date, leftMonth)
-                            ? 'text-gray-700 hover:bg-gray-50'
-                            : 'text-gray-300 pointer-events-none'
-                        }`}
+                              ? 'text-gray-700 hover:bg-gray-100'
+                              : 'text-gray-300 pointer-events-none'
+                          }`}
                         onClick={() => handleDateClick(date)}
                       >
                         {moment(date).format('D')}
@@ -211,13 +209,13 @@ const DateRangePicker = () => {
             <div className="pt-5 px-6">
               <div className="flex justify-between items-center p-1 mb-3">
                 <button onClick={prevMonth}>
-                &#8592;
+                  &#8592;
                 </button>
                 <h2 className="text-base text-gray-700 font-medium">
                   {moment(rightMonth).format('MMMM YYYY')}
                 </h2>
                 <button onClick={nextMonth}>
-                &#8594;
+                  &#8594;
                 </button>
               </div>
 
@@ -231,27 +229,25 @@ const DateRangePicker = () => {
 
                   {getDaysInMonth(rightMonth).map((date, index) => (
                     <div
-                      className={`flex justify-center items-center ${
-                        isInRange(date) && isCurrentMonth(date, rightMonth)
-                          ? isStartDate(date)
-                            ? 'bg-gray-50 rounded-l-full'
-                            : isEndDate(date)
-                            ? 'bg-gray-50 rounded-r-full'
-                            : `bg-gray-50 ${getFirstColumn(index) ? 'rounded-l-full' : ''} ${getLastColumn(index) ? 'rounded-r-full' : ''}`
-                          : ''
-                      }`}
+                      className={`flex justify-center items-center ${isInRange(date) && isCurrentMonth(date, rightMonth)
+                        ? isStartDate(date)
+                          ? 'bg-gray-100 rounded-l-full'
+                          : isEndDate(date)
+                            ? 'bg-gray-100 rounded-r-full'
+                            : `bg-gray-100 ${getFirstColumn(index) ? 'rounded-l-full' : ''} ${getLastColumn(index) ? 'rounded-r-full' : ''}`
+                        : ''
+                        }`}
                       key={index}
                     >
                       <button
-                        className={`px-3 py-2 h-10 w-10 flex justify-center items-center rounded-full text-sm font-normal ${
-                          (isStartDate(date) || isEndDate(date)) && isCurrentMonth(date, rightMonth)
-                            ? 'bg-primary-700 text-white'
-                            : isToday(date) && isCurrentMonth(date, rightMonth)
-                            ? 'bg-gray-100'
+                        className={`px-3 py-2 h-10 w-10 flex justify-center items-center rounded-full text-sm font-normal ${(isStartDate(date) || isEndDate(date)) && isCurrentMonth(date, rightMonth)
+                          ? 'bg-blue-500 text-white'
+                          : isToday(date) && isCurrentMonth(date, rightMonth)
+                            ? 'bg-gray-200'
                             : isCurrentMonth(date, rightMonth)
-                            ? 'text-gray-700 hover:bg-gray-50'
-                            : 'text-gray-300 pointer-events-none'
-                        }`}
+                              ? 'text-gray-700 hover:bg-gray-100'
+                              : 'text-gray-300 pointer-events-none'
+                          }`}
                         onClick={() => handleDateClick(date)}
                       >
                         {moment(date).format('D')}
@@ -264,10 +260,10 @@ const DateRangePicker = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="py-2 border-t bg-gray-50 flex justify-between">
+          <div className="py-2 border-t bg-gray-100 flex justify-between">
             <button
               onClick={handleCancel}
-              className="px-6 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100"
+              className="px-6 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-200"
             >
               Cancel
             </button>
